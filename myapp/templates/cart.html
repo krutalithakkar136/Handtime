@@ -1,0 +1,280 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+      </div>
+
+  <!-- product section -->
+
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        {% if carts %}
+        <h2>
+          Cart Products
+        </h2>
+        {% else %}
+        <h2>
+          No Products In Cart
+        </h2>
+        {% endif %}
+      </div>
+      <div class="product_container">
+        {% for i in carts %}
+        <div class="box">
+          <div class="box-content">
+            <div class="img-box">
+              <img src="{{i.product.product_image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="text">
+                <h6>
+                  {{i.product.product_model}}
+                </h6>
+                <h5>
+                  MRP : <span>Rs.</span> {{i.product_price}}
+                </h5>
+              </div>
+              <div class="like">
+                <form method="post" action="{% url 'discount' pk=i.pk %}">
+                  {% csrf_token %}
+                  <h6>Enter Code : </h6><input type="text" name="discount"
+                  onchange="this.form.submit();">
+                </form>
+                <h5>
+                  Discounted Price : <span>Rs.</span> {{i.discounted_price}}
+                </h5>
+              </div>
+            </div>
+          </div>
+          <h5>Total Price : {{i.total_price}}</h5>
+          <form method="post" action="{% url 'change_qty' pk=i.pk %}">
+                  {% csrf_token %}
+                  <h6>Quantity: </h6><input type="number" name="product_qty" value="{{i.product_qty}}" min="1" max="10" onchange="this.form.submit();">
+          </form>
+          {% if request.session.email %}
+          <div class="btn-box">
+            <a href="{% url 'remove_from_cart' pk=i.product.pk %}">
+              Remove From Cart
+            </a>
+          </div>
+          {% else %}
+          <div class="btn-box">
+            <a href="{% url 'login' %}">
+              Login
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+      </div>
+      {% if carts %}
+      <h1> Net Price: {{net_price}}</h1>
+      <form method="post" action="{% url 'pay' %}">
+        {% csrf_token %}
+        <input type="hidden" name="amount" value="{{net_price}}">
+        <input type="submit" value="Proceed For Payment" class="btn btn-primary">
+      </form>
+      {% endif %}
+    </div>
+  </section>
+  
+  <!-- info section -->
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>
+          HandTime
+        </h2>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About Shop
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/location-white.png' %}" width="18px" alt="">
+              </div>
+              <p>
+                The Times Pinnacle,6th Floor,S.G Highway,Ahmedabad,Gujarat,India.
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/telephone-white.png' %}" width="12px" alt="">
+              </div>
+              <p>
+                (079)25453500
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/envelope-white.png' %}" width="18px" alt="">
+              </div>
+              <p>
+                handtime@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Informations
+            </h5>
+            <p>
+              The watch size refers to the dial or face's diameter in millimeters.If you prefer a smaller watch face we recommend 34mm for men and 32mm or 30mm for women.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_insta">
+            <h5>
+              Instagram
+            </h5>
+            <div class="insta_container">
+              <div class="row m-0">
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w1.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w2.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w3.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w4.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w5.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 px-0">
+                  <a href="">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w6.png' %}" alt="">
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                Subscribe
+              </button>
+            </form>
+            <div class="social_box">
+              <a href="">
+                <img src="{% static 'images/fb.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/twitter.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/linkedin.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/youtube.png' %}" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+  <!-- end info_section -->
+
+  <!-- jquery plugins-->
+
+  <script src="https://js.stripe.com/v3/"></script>
+  
+<script type="text/javascript">
+ // Create an instance of the Stripe object with your publishable API key
+ var stripe = Stripe('pk_test_51NFi1FSIsM0CypdH1tM4Rq2osTyL1u8HJUbZv9etsEeAfQhz9Q4cyCt7WlVEJhWJ1iNzMGh4lpZiHyZUesjT0spR00WiXpQZnb');
+ var checkoutButton = document.getElementById('checkout-button');
+
+ checkoutButton.addEventListener('click', function() {
+ // Create a new Checkout Session using the server-side endpoint you
+ // created in step 3.
+ 
+ fetch('/create-checkout-session/', {
+ method: 'POST',
+  headers:{
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+
+  },
+    body: JSON.stringify({'post_data':'{{net_price}}'})
+ })
+ .then(function(response) {
+ return response.json();
+ })
+ .then(function(session) {
+ return stripe.redirectToCheckout({ sessionId: session.id });
+ })
+ .then(function(result) {
+ // If `redirectToCheckout` fails due to a browser or network
+ // error, you should display the localized error message to your
+ // customer using `error.message`.
+ if (result.error) {
+ alert(result.error.message);
+ }
+ })
+ .catch(function(error) {
+ console.error('Error:', error);
+ });
+ });
+ </script>
+</body>
+
+</html>
+{% endblock %}
+
+

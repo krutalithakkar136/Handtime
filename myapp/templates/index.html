@@ -1,0 +1,559 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+</head>
+
+<body>
+
+  <div class="hero_area">
+
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div class="slider_bg_box">
+        <img src="{% static 'images/slider-bg.jpg' %}" alt="">
+      </div>
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Stylish Watches
+                    </h1>
+                    <p>
+                      Sign Up/Log In to discover wide range of watches.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'signup' %}" class="btn1">
+                        Sign Up
+                      </a>
+                      <a href="{% url 'login' %}" class="btn2">
+                        Log In
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      New Arrivals
+                    </h1>
+                    <p>
+                      Discover all the new arrivals at best prices.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'products' %}" class="btn1">
+                        Let's Explore!
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <h1>
+                      Stylish Watches
+                    </h1>
+                    <p>
+                      Discover Best Watches for Men And Women at best prices and great offers.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'contact' %}" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="{% url 'about' %}" class="btn2">
+                        About Us
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+          <li data-target="#customCarousel1" data-slide-to="2"></li>
+
+        </ol>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+  </div>
+
+
+  <!-- service section -->
+
+  <section class="service_section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static 'images/feature-1.png' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Fast Delivery
+              </h5>
+              <p>
+                Your orders will be delivered within 2-3 days.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static 'images/feature-2.png' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Free Shiping
+              </h5>
+              <p>
+                No shiping charges will be added.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static 'images/feature-3.png' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Best Quality
+              </h5>
+              <p>
+                Original products from standard brands.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="box ">
+            <div class="img-box">
+              <img src="{% static 'images/feature-4.png' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                24x7 Customer support
+              </h5>
+              <p>
+                We are at your service 24x7.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end service section -->
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img_container">
+            <div class="img-box b1">
+              <img src="{% static 'images/a-1.jpg' %}" alt="">
+            </div>
+            <div class="img-box b2">
+              <img src="{% static 'images/a-2.jpg' %}" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <h2>
+              About Our Shop
+            </h2>
+            <p>
+              The Handtime watch store is India's leading luxury,premium and smart watches brand store,with over 30 International brands.Shop branded watches for women and men with us.
+            </p>
+            <a href="{% url 'contact' %}">
+              Get Connected
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end about section -->
+
+
+  <!--product section-->
+  <section class="product_section ">
+    <div class="container">
+      <div class="product_heading">
+        <h2>Top Sales</h2>
+      </div>
+      <div class="product_container">
+        {% for i in products %}
+        <div class="box">
+          <div class="box-content">
+            <div class="img-box">
+              <img src="{{i.product_image.url}}" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="text">
+                <h6>
+                  {{i.product_model}}
+                </h6>
+                <h5>
+                  <span>Rs.</span> {{i.product_price}}
+                </h5>
+              </div>
+              <div class="like">
+                <h6>
+                  Like
+                </h6>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if request.session.email %}
+         
+          <div class="btn-box">
+              <a href="{% url 'product_details' pk=i.pk %}">
+              Product Details
+            </a>
+          </div>
+          {% else %}
+          <div class="btn-box">
+            <a href="{% url 'login' %}">
+              Login
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+
+
+  <!-- end product section -->
+
+    <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Contact Us
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            {% if msg %}
+              <b style="color: blue;">{{msg}}</b>
+            {% endif %}
+            <form method="post" action="{% url 'contact' %}">
+              {% csrf_token %}
+              <div>
+                <input type="text" placeholder="Your Name" name="name"/>
+              </div>
+              <div>
+                <input type="text" placeholder="Phone Number" name="mobile"/>
+              </div>
+              <div>
+                <input type="email" placeholder="Email" name="email"/>
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" name="message"/>
+              </div>
+              <div class="btn_box">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 ">
+          <div class="map_container">
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.957106710794!2d72.5538429751883!3d23.02534707917176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f9f38dec53%3A0xf88c617eb48b0674!2sChimanlal%20Girdharlal%20Rd%2C%20Ellisbridge%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1683795816260!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
+
+
+  <!-- client section -->
+  <section class="client_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Testimonial
+        </h2>
+      </div>
+    </div>
+    <div id="customCarousel2" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'images/client.jpg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Rohan Shah
+                        </h5>
+                        <h6>
+                          Customer
+                        </h6>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Handtime has always provided me with the best customer service I have ever received. Their watches are always top notch from the best brands out there and at prices that a guy like me, who has a budget that is not that suited for ownership of nice watches, to have the opportunity to own a decent watch at a great price.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'images/client1.jpg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Anita Mehta
+                        </h5>
+                        <h6>
+                          Customer
+                        </h6>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Got the watch I wanted at a good price and shipping was efficient.My favorite thing about handtime.com is the variety. I've have added several to my collection.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 mx-auto">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="{% static 'images/client2.jpg' %}" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <div class="client_info">
+                      <div class="client_name">
+                        <h5>
+                          Mahesh Patel
+                        </h5>
+                        <h6>
+                          Customer
+                        </h6>
+                      </div>
+                      <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Customer service was fantastic.Handtime.com had always been very reliable to shop with!  I've been buying from them for 5 years now!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ol class="carousel-indicators">
+        <li data-target="#customCarousel2" data-slide-to="0" class="active"></li>
+        <li data-target="#customCarousel2" data-slide-to="1"></li>
+        <li data-target="#customCarousel2" data-slide-to="2"></li>
+      </ol>
+    </div>
+  </section>
+  <!-- end client section -->
+
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="info_logo">
+        <h2>
+          HandTime
+        </h2>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              About Shop
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/location-white.png' %}" width="18px" alt="">
+              </div>
+              <p>
+                The Times Pinnacle,6th Floor,S.G Highway,Ahmedabad,Gujarat,India.
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/telephone-white.png' %}" width="12px" alt="">
+              </div>
+              <p>
+                (079)25453500
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{% static 'images/envelope-white.png' %}" width="18px" alt="">
+              </div>
+              <p>
+                handtime@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Informations
+            </h5>
+            <p>
+              The watch size refers to the dial or face's diameter in millimeters.If you prefer a smaller watch face we recommend 34mm for men and 32mm or 30mm for women.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_insta">
+            <h5>
+              Instagram
+            </h5>
+            <div class="insta_container">
+              <div class="row m-0">
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w1.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w2.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w3.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w4.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w5.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-4 px-0">
+                    <div class="insta-box b-1">
+                      <img src="{% static 'images/w6.png' %}" alt="">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                Subscribe
+              </button>
+            </form>
+            <div class="social_box">
+              <a href="">
+                <img src="{% static 'images/fb.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/twitter.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/linkedin.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'images/youtube.png' %}" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+</body>
+
+</html>
+{% endblock %}
